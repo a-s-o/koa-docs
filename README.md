@@ -37,3 +37,8 @@ app.listen(3000, (err) => {
 * [ ] Ability to collapse/expand routes and groups
 * [ ] Quick filter
 * [ ] Quickly switch themes and configurable default theme
+
+
+## License
+
+[MIT](LICENSE)
