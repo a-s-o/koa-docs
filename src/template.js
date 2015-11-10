@@ -12,8 +12,10 @@ const charset = `<meta charset="utf-8">`;
 const ua = `<meta http-equiv="X-UA-Compatible" content="IE=edge">`;
 const vp = `<meta name="viewport" content="width=device-width, initial-scale=1">`;
 
-const styles = path.resolve(__dirname, './styles.css');
-const css = fs.readFileSync(styles, 'utf-8');
+// Read client side includes
+const read = file => fs.readFileSync(path.resolve(__dirname, file), 'utf-8');
+const css = read('./client/styles.css');
+const js = read('./client/script.js');
 
 const header = require('./components/header');
 const sidebar = require('./components/sidebar');
@@ -36,6 +38,7 @@ module.exports = function renderTemplate (opts) {
                href: bootstrap('css/bootstrap.min.css')
             }),
             m('link', {
+               id: 'theme',
                rel: 'stylesheet',
                href: swatch('paper/bootstrap.min.css')
             }),
@@ -58,7 +61,8 @@ module.exports = function renderTemplate (opts) {
             }),
             m('script', {
                src: bootstrap('js/bootstrap.min.js')
-            })
+            }),
+            m.trust(`<script>${js}</script>`)
          ])
       ])
    ];
