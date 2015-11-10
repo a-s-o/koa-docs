@@ -3,6 +3,12 @@ An automatic documentation generator for [koa](https://github.com/koajs/koa) API
 
 Currently supports routes created using [koa-joi-router](https://github.com/pebble/koa-joi-router) which exposes the internal route configuration and allows this type of documentation to be generated.
 
+## Demo
+
+See `example` folder for source code. [View example output](http://a-s-o.github.io/koa-docs/example.html)
+
+![Screenshot](http://i.imgur.com/jUcraT6.png)
+
 ## Install
 
     > npm install --save koa-docs
