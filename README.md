@@ -23,7 +23,6 @@ app.use(docs.get('/v1/docs', {
    version: '1.0.0',
 
    groups: [
-      // Provide the routes to the koa-api-docs for rendering
       { groupName: 'Pets', routes: [/*  ... route specs ...  */] },
       { groupName: 'Store', routes: [/*  ... route specs ...  */] }
    ]
