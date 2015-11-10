@@ -67,9 +67,13 @@ In addition to the above options, `koa-docs` looks for the following properties 
 
 ## Roadmap to 1.0
 
+* [ ] Render `extendedDescription` using markdown
+* [ ] Add `description` and `extendedDescription` for groups
 * [ ] Ability to collapse/expand routes and groups
 * [ ] Ability to switch themes and make default theme configurable
+* [ ] More descriptive type descriptions for arrays and nested objects
 * [ ] Quick filter (fuzzysearch)
+* [ ] Ability to save the generated HTML to file
 * [ ] Multi version support
 
 ## License
