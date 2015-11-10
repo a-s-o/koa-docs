@@ -3,36 +3,31 @@
 const m = require('mithril');
 const get = require('lodash/object/get');
 
-module.exports = function routeParams (route, className) {
+module.exports = function routeParams (route) {
    return [
-      paramsTable(route.validate, 'header', { className }),
-      paramsTable(route.validate, 'query', { className }),
-      paramsTable(route.validate, 'params', { className }),
-      paramsTable(route.validate, 'body', { className })
+      paramsTable(route.validate, 'header'),
+      paramsTable(route.validate, 'query'),
+      paramsTable(route.validate, 'params'),
+      paramsTable(route.validate, 'body'),
+      paramsTable(route.validate, 'output')
    ];
 };
 
-function paramsTable (validations, type, opts) {
+function paramsTable (validations, type) {
    if (!validations || !validations.hasOwnProperty(type)) return [];
 
    const schema = validations[type];
 
-   const className = opts.className || '';
-   const style = {
-      borderTop: '1px solid #eee',
-      borderBottom: '1px solid #eee'
-   };
-
    return [
       // Heading before the table (i.e Body, Params, etc)
-      paramsHeader(schema, type, validations, opts),
+      paramsHeader(schema, type, validations),
 
-      m('table.table.table-bordered.table-striped', { style, className }, [
+      m('table.table.table-striped', [
          m.trust(`
             <colgroup>
-               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
-               <col span="1" style="width: 60%;">
+               <col span="1" style="width: 65%;">
             </colgroup>
             <thead>
                <tr>
@@ -43,16 +38,35 @@ function paramsTable (validations, type, opts) {
             </thead>
          `),
 
-         paramsTableBody(schema, type, validations)
+         getItems(schema).map(paramsTableBody)
       ])
    ];
 }
 
-function paramsHeader (schema, type, validations, opts) {
-   const bodyType = validations.type;
-   const label = get(schema, '_settings.language.label');
+function isArray (schema) {
+   return schema._type === 'array';
+}
 
-   return m('h4', { style: { margin: '1rem' }, className: opts.className }, [
+function getItems (schema) {
+   if (!isArray(schema)) return [schema];
+   return get(schema, '_inner.items', []);
+}
+
+function itemLabel (schema) {
+   return get(schema, '_settings.language.label', '');
+}
+
+function arrayLabel (schema) {
+   if (!isArray(schema)) return '';
+   const items = getItems(schema).map(itemLabel);
+   return `Array [${items}]`;
+}
+
+function paramsHeader (schema, type, validations) {
+   const bodyType = validations.type;
+   const label = isArray(schema) ? arrayLabel(schema) : itemLabel(schema);
+
+   return m('h4', { style: { margin: '1rem' } }, [
       // Capitalize
       type.slice(0, 1).toUpperCase() + type.slice(1),
       // In case of body also indicate what type of body is expected

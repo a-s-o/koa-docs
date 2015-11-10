@@ -33,19 +33,19 @@ function routeInfo (method, path) {
    ]);
 }
 
-function routeDescription (route, className) {
+function routeDescription (route) {
    const meta = route.meta || {};
    const desc = meta.description;
    const extd = meta.extendedDescription;
 
-   return m('div.panel-body', { className }, [
+   return m('div.panel-body', [
       m('p', routeInfo(route.method, route.path)),
       !desc ? '' : m('p', desc),
       !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) ))
    ]);
 }
 
-function routeFooter (route, className) {
+function routeFooter (route) {
    const handler = stripIndent(`   ${route.handler.toString()}`);
 
    const style = {
@@ -53,7 +53,7 @@ function routeFooter (route, className) {
       margin: 0
    };
 
-   return m('div.panel-footer', { className }, [
+   return m('div.panel-footer', [
       m('h5', { style: { margin: '1rem' } }, 'Implementation:'),
       m('pre', { style }, handler)
    ]);
@@ -66,9 +66,11 @@ function routePanel (route) {
 
    return m(`div.panel.panel-default`, { id }, [
       routeHeading(route, collapseSelector),
-      routeDescription(route, collapseState),
-      routeParams(route, collapseState),
-      routeFooter(route, collapseState)
+      m('div', { className: collapseState }, [
+         routeDescription(route),
+         routeParams(route),
+         routeFooter(route)
+      ])
    ]);
 }
 
