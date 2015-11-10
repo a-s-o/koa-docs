@@ -70,7 +70,7 @@ In addition to the above options, `koa-docs` looks for the following properties 
 * [x] Render `extendedDescription` using markdown
 * [x] Add `description` and `extendedDescription` for groups
 * [x] Ability to collapse/expand routes and groups
-* [ ] Ability to switch themes and make default theme configurable
+* [x] Ability to switch themes and make default theme configurable
 * [ ] More descriptive type descriptions for arrays and nested objects
 * [ ] Create separate section for models (joi objects that have a label)
 * [ ] Add popovers for displaying models
