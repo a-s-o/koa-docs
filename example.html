@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><head><title>Pet Store API</title><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css"><style>body {
+
+<!DOCTYPE html><html lang="en"><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><head><title>Pet Store API</title><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"><link id="theme" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/simplex/bootstrap.min.css"><style>body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -96,19 +97,78 @@ div.content > nav.sidebar {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+/* Collapse button */
+
+button.collapse-button > .icon-collapse {
+   display: none;
+}
+
+button.collapse-button[aria-expanded=true] > .icon-expand {
+   display: none;
+}
+
+button.collapse-button[aria-expanded=true] > .icon-collapse {
+   display: block;
+}
 </style></head><body>
       <header class="navbar navbar-inverse">
          <div class="container-fluid">
            <div class="navbar-header">
              <a class="navbar-brand" href="#">Pet Store API 1.0.0</a>
            </div>
+
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+             <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown">
+                 <a href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown" role="button"
+                    aria-haspopup="true"
+                    aria-expanded="false">Switch theme <span class="caret"></span>
+                 </a>
+                 <ul class="dropdown-menu switch-theme">
+                   <li><a href="#" theme="bootstrap">Bootstrap</a></li>
+                   <li role="separator" class="divider"></li>
+                   <li><a href="#" theme="cerulean">Cerulean</a></li>
+                   <li><a href="#" theme="cosmo">Cosmo</a></li>
+                   <li><a href="#" theme="cyborg">Cyborg</a></li>
+                   <li><a href="#" theme="darkly">Darkly</a></li>
+                   <li><a href="#" theme="flatly">Flatly</a></li>
+                   <li><a href="#" theme="journal">Journal</a></li>
+                   <li><a href="#" theme="lumen">Lumen</a></li>
+                   <li><a href="#" theme="paper">Paper</a></li>
+                   <li><a href="#" theme="readable">Readable</a></li>
+                   <li><a href="#" theme="sandstone">Sandstone</a></li>
+                   <li><a href="#" theme="simplex">Simplex</a></li>
+                   <li><a href="#" theme="slate">Slate</a></li>
+                   <li><a href="#" theme="spacelab">Spacelab</a></li>
+                   <li><a href="#" theme="superhero">Superhero</a></li>
+                   <li><a href="#" theme="united">United</a></li>
+                   <li><a href="#" theme="yeti">Yeti</a></li>
+                 </ul>
+               </li>
+             </ul>
+           </div>
          </div>
       </header>
-   <div class="content"><main><h2 class="sub-header">Pets</h2><div id="09b5ae87b1d2" class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Add pet</h3></div><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">post</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p><p>Add a new pet to the store</p><p></p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Pet</em></h4><table style="border-top:1px solid #eee;border-bottom:1px solid #eee" class="table table-bordered table-striped">
+   <div class="content"><main><div class="group-header"><button data-toggle="collapse" data-target="#group-3faf4c50e792" aria-expanded="true" style="float:right" class="btn btn-default collapse-button"><span class="icon-expand"><span style="margin-right:1rem" class="glyphicon glyphicon-eye-open"></span>Expand</span><span class="icon-collapse"><span style="margin-right:1rem" class="glyphicon glyphicon-eye-close"></span>Collapse</span></button><h2 class="sub-header">Pets</h2></div><p class="lead">Functionality for dealing with pets</p><div id="group-3faf4c50e792" class="collapse in"><p><p>Markdown is supported in the <code>extendedDescription</code> fields so
+it is an ideal place to add additional information while leaving
+the <code>friendlyName</code> and <code>description</code> fields concise. This allows
+easier navigation and better collapsing of groups and routes.</p>
+<ul>
+<li>Donec et mollis dolor.</li>
+<li>Praesent et diam eget libero egestas mattis sit amet vitae augue.</li>
+<li>Nam tincidunt congue enim, ut porta lorem lacinia consectetur.</li>
+<li>Donec ut libero sed arcu vehicula ultricies a non tortor.</li>
+<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+</ul>
+</p><div id="09b5ae87b1d2" class="panel panel-default"><div data-toggle="collapse" data-target=".collapse-09b5ae87b1d2" style="cursor:pointer" class="panel-heading"><h3 class="panel-title">Add pet</h3></div><div class="collapse-09b5ae87b1d2 collapse in"><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">post</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p><p>Add a new pet to the store</p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Pet</em></h4><table class="table table-striped">
             <colgroup>
-               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
-               <col span="1" style="width: 60%;">
+               <col span="1" style="width: 65%;">
             </colgroup>
             <thead>
                <tr>
@@ -120,11 +180,11 @@ div.content > nav.sidebar {
          <tbody><tr><td>id</td><td>number</td><td></td></tr><tr><td>name</td><td>string *</td><td></td></tr><tr><td>category</td><td>object</td><td></td></tr><tr><td>tags</td><td>array</td><td></td></tr><tr><td>photoUrls</td><td>array *</td><td></td></tr><tr><td>status</td><td>string</td><td>pet status in the store</td></tr></tbody></table><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
    const pet = this.request.body;
    return yield this.db().table('pets').insert(pet).run();
-}</pre></div></div><div id="6d532e29f197" class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Update pet</h3></div><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">put</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p><p>Update an existing pet</p><p></p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Pet</em></h4><table style="border-top:1px solid #eee;border-bottom:1px solid #eee" class="table table-bordered table-striped">
+}</pre></div></div></div><div id="6d532e29f197" class="panel panel-default"><div data-toggle="collapse" data-target=".collapse-6d532e29f197" style="cursor:pointer" class="panel-heading"><h3 class="panel-title">Update pet</h3></div><div class="collapse-6d532e29f197 collapse in"><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">put</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p><p>Update an existing pet</p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Pet</em></h4><table class="table table-striped">
             <colgroup>
-               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
-               <col span="1" style="width: 60%;">
+               <col span="1" style="width: 65%;">
             </colgroup>
             <thead>
                <tr>
@@ -141,11 +201,11 @@ div.content > nav.sidebar {
    if (!existing) this.throw(404, 'Pet not found');
 
    return this.db().table('pets').update(pet).run();
-}</pre></div></div><div id="f2dfcccb103f" class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Find pets by status</h3></div><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">put</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p><p></p><p></p></div><h4 style="margin:1rem">Query</h4><table style="border-top:1px solid #eee;border-bottom:1px solid #eee" class="table table-bordered table-striped">
+}</pre></div></div></div><div id="f2dfcccb103f" class="panel panel-default"><div data-toggle="collapse" data-target=".collapse-f2dfcccb103f" style="cursor:pointer" class="panel-heading"><h3 class="panel-title">Find pets by status</h3></div><div class="collapse-f2dfcccb103f collapse in"><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">put</button></span><input type="text" value="/pet" style="padding-left:1em" class="form-control"></div></p></div><h4 style="margin:1rem">Query</h4><table class="table table-striped">
             <colgroup>
-               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
-               <col span="1" style="width: 60%;">
+               <col span="1" style="width: 65%;">
             </colgroup>
             <thead>
                <tr>
@@ -154,26 +214,41 @@ div.content > nav.sidebar {
                   <th>Description</th>
                </tr>
             </thead>
-         <tbody><tr><td>status</td><td>array</td><td>Status values that need to be considered for filter</td></tr></tbody></table><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
+         <tbody><tr><td>status</td><td>array</td><td>Status values that need to be considered for filter</td></tr></tbody></table><h4 style="margin:1rem">Output<em>: Array [Pet]</em></h4><table class="table table-striped">
+            <colgroup>
+               <col span="1" style="width: 20%;">
+               <col span="1" style="width: 15%;">
+               <col span="1" style="width: 65%;">
+            </colgroup>
+            <thead>
+               <tr>
+                  <th>Field</th>
+                  <th>Type</th>
+                  <th>Description</th>
+               </tr>
+            </thead>
+         <tbody><tr><td>id</td><td>number *</td><td></td></tr><tr><td>name</td><td>string *</td><td></td></tr><tr><td>category</td><td>object</td><td></td></tr><tr><td>tags</td><td>array</td><td></td></tr><tr><td>photoUrls</td><td>array *</td><td></td></tr><tr><td>status</td><td>string *</td><td>pet status in the store</td></tr></tbody></table><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
    const query = this.request.query;
 
    return yield this.db()
       .table('pets')
       .getAll(query.status)
       .run();
-}</pre></div></div><h2 class="sub-header">Store</h2><div id="ba761460bff6" class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Store inventory</h3></div><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">get</button></span><input type="text" value="/store/inventory" style="padding-left:1em" class="form-control"></div></p><p>Returns pet inventories by status</p><p>
-         Returns a map of status codes to quantities
-      </p></div><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
+}</pre></div></div></div></div><div class="group-header"><button data-toggle="collapse" data-target="#group-5fbe7a60d9e5" aria-expanded="true" style="float:right" class="btn btn-default collapse-button"><span class="icon-expand"><span style="margin-right:1rem" class="glyphicon glyphicon-eye-open"></span>Expand</span><span class="icon-collapse"><span style="margin-right:1rem" class="glyphicon glyphicon-eye-close"></span>Collapse</span></button><h2 class="sub-header">Store</h2></div><div id="group-5fbe7a60d9e5" class="collapse in"><div id="ba761460bff6" class="panel panel-default"><div data-toggle="collapse" data-target=".collapse-ba761460bff6" style="cursor:pointer" class="panel-heading"><h3 class="panel-title">Store inventory</h3></div><div class="collapse-ba761460bff6 collapse in"><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">get</button></span><input type="text" value="/store/inventory" style="padding-left:1em" class="form-control"></div></p><p>Returns pet inventories by status</p><p><p><strong>Implementation notes</strong></p>
+<ul>
+<li>Returns a map of status codes to quantities</li>
+</ul>
+</p></div><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
    // This route does not have any validations
    return this.db().table('store')
       .groupBy('statusCode')
       .map('quantity')
       .run();
-}</pre></div></div><div id="9054a5313ace" class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Place an order for a pet</h3></div><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">post</button></span><input type="text" value="/store/order" style="padding-left:1em" class="form-control"></div></p><p></p><p></p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Order</em></h4><table style="border-top:1px solid #eee;border-bottom:1px solid #eee" class="table table-bordered table-striped">
+}</pre></div></div></div><div id="9054a5313ace" class="panel panel-default"><div data-toggle="collapse" data-target=".collapse-9054a5313ace" style="cursor:pointer" class="panel-heading"><h3 class="panel-title">Place an order for a pet</h3></div><div class="collapse-9054a5313ace collapse in"><div class="panel-body"><p><div class="input-group"><span class="input-group-btn"><button class="btn btn-primary">post</button></span><input type="text" value="/store/order" style="padding-left:1em" class="form-control"></div></p></div><h4 style="margin:1rem">Body<span style="margin-left:1ex" class="label label-info">json</span><em>: Order</em></h4><table class="table table-striped">
             <colgroup>
-               <col span="1" style="width: 25%;">
+               <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
-               <col span="1" style="width: 60%;">
+               <col span="1" style="width: 65%;">
             </colgroup>
             <thead>
                <tr>
@@ -185,4 +260,17 @@ div.content > nav.sidebar {
          <tbody><tr><td>id</td><td>number</td><td></td></tr><tr><td>petId</td><td>number</td><td></td></tr><tr><td>quantity</td><td>number</td><td></td></tr><tr><td>shipDate</td><td>date</td><td></td></tr><tr><td>status</td><td>string</td><td></td></tr><tr><td>complete</td><td>boolean</td><td></td></tr></tbody></table><div class="panel-footer"><h5 style="margin:1rem">Implementation:</h5><pre style="border:0;margin:0">*handler() {
    const order = this.request.body;
    yield this.db().table('orders').insert(order).run();
-}</pre></div></div></main><nav class="sidebar"><ul class="nav nav-sidebar"><lh><strong>Pets</strong></lh><li><a href="#09b5ae87b1d2">Add pet</a></li><li><a href="#6d532e29f197">Update pet</a></li><li><a href="#f2dfcccb103f">Find pets by status</a></li></ul><ul class="nav nav-sidebar"><lh><strong>Store</strong></lh><li><a href="#ba761460bff6">Store inventory</a></li><li><a href="#9054a5313ace">Place an order for a pet</a></li></ul></nav></div><script src="http://code.jquery.com/jquery-2.1.4.min.js"></script><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script></body></html>
+}</pre></div></div></div></div></main><nav class="sidebar"><ul class="nav nav-sidebar"><lh><strong>Pets</strong></lh><li><a href="#09b5ae87b1d2">Add pet</a></li><li><a href="#6d532e29f197">Update pet</a></li><li><a href="#f2dfcccb103f">Find pets by status</a></li></ul><ul class="nav nav-sidebar"><lh><strong>Store</strong></lh><li><a href="#ba761460bff6">Store inventory</a></li><li><a href="#9054a5313ace">Place an order for a pet</a></li></ul></nav></div><script src="http://code.jquery.com/jquery-2.1.4.min.js"></script><script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script><script>'use strict';
+/* globals $ */
+
+$('.switch-theme.dropdown-menu').on('click', function changeThem (evt) {
+   const theme = $(evt.target).attr('theme');
+   if (typeof theme !== 'string' || !theme) return;
+
+   const themeUrl = theme === 'bootstrap' ?
+      'bootstrap/3.3.5/css/bootstrap-theme.min.css' :
+      'bootswatch/3.3.5/' + theme + '/bootstrap.min.css';
+
+   $('link#theme').attr('href', 'https://maxcdn.bootstrapcdn.com/' + themeUrl);
+});
+</script></body></html>
