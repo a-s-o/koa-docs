@@ -61,10 +61,10 @@ In addition to the above options, `koa-docs` looks for the following properties 
 - `description`: string that describes the routes; keep this short at about 1 scentence. This is displayed in both expanded and collapsed states as well as in tooltips. This should be a simple string; no markdown
 - `extendedDescription`: string that supports markdown and is displayed only in when a route is being displayed in an expanded state. Make this as long as you need.
 
-### sample route definitions
+### sample routes
 
-[example/pets.js](example/pets.js)
-[example/store.js](example/store.js)
+* [example/pets.js](example/pets.js)
+* [example/store.js](example/store.js)
 
 ## Roadmap to 1.0
 
