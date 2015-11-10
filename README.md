@@ -1,8 +1,6 @@
 # koa-docs
 An automatic documentation generator for [koa](https://github.com/koajs/koa) APIs. The goal is to make documentation easy using route specs that may already exist.
 
-Currently supports routes created using [koa-joi-router](https://github.com/pebble/koa-joi-router) which exposes the internal route configuration and allows this type of documentation to be generated.
-
 ## Demo
 
 See `example` folder for source code. [View example output](http://a-s-o.github.io/koa-docs/example.html)
@@ -37,13 +35,43 @@ app.listen(3000, (err) => {
 });
 ```
 
+## Route specs
+The route specs are the same as [koa-joi-router](https://github.com/pebble/koa-joi-router#route-options), therefore, those routes can be used directly with `koa-docs`. Specifications are as follows:
+
+- `method`: **required** HTTP method like "get", "post", "put", etc
+- `path`: **required** string
+- `validate`
+  - `header`: object which conforms to [Joi](https://github.com/hapijs/joi) validation
+  - `query`: object which conforms to [Joi](https://github.com/hapijs/joi) validation
+  - `params`: object which conforms to [Joi](https://github.com/hapijs/joi) validation
+  - `body`: object which conforms to [Joi](https://github.com/hapijs/joi) validation
+  - `maxBody`: max incoming body size for forms or json input
+  - `failure`: HTTP response code to use when input validation fails. default `400`
+  - `type`: if validating the request body, this is **required**. either `form`, `json` or `multipart`
+  - `output`: output validator object which conforms to [Joi](https://github.com/hapijs/joi) validation. if output is invalid, an HTTP 500 is returned
+  - `continueOnError`: if validation fails, this flags determines if `koa-joi-router` should [continue processing](#handling-errors) the middleware stack or stop and respond with an error immediately. useful when you want your route to handle the error response. default `false`
+- `handler`: **required** GeneratorFunction
+- `meta`: meta data about this route. `koa-joi-router` ignores this but stores it along with all other route data
+
+### meta
+
+In addition to the above options, `koa-docs` looks for the following properties in the `meta` object of each route:
+
+- `friendlyName`: string which is used in the sidebar and route title; route path is used if this is not proivded
+- `description`: string that describes the routes; keep this short at about 1 scentence. This is displayed in both expanded and collapsed states as well as in tooltips. This should be a simple string; no markdown
+- `extendedDescription`: string that supports markdown and is displayed only in when a route is being displayed in an expanded state. Make this as long as you need.
+
+### sample route definitions
+
+[example/pets.js](example/pets.js)
+[example/store.js](example/store.js)
+
 ## Roadmap to 1.0
 
 * [ ] Multi version support
 * [ ] Ability to collapse/expand routes and groups
 * [ ] Quick filter
 * [ ] Quickly switch themes and configurable default theme
-
 
 ## License
 
