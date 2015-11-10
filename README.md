@@ -65,8 +65,8 @@ In addition to the above options, `koa-docs` looks for the following properties 
 
 ### sample routes
 
-* [example/pets.js](example/pets.js)
-* [example/store.js](example/store.js)
+* [pets example](example/routes/pets.js)
+* [store example](example/routes/store.js)
 
 ## Roadmap to 1.0
 
