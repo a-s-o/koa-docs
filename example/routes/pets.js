@@ -78,7 +78,7 @@ const getPetByStatus = {
             .min(1)        // At least 1 should be provided
             .single()      // If only one is provided, wrap it in an array
       },
-      output: t.array().items(Pet)
+      output: t.array().items(Pet.requiredKeys('id', 'status'))
    },
    *handler () {
       const query = this.request.query;
