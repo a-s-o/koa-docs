@@ -18,7 +18,8 @@ const storeInventory = {
       friendlyName: 'Store inventory',
       description: 'Returns pet inventories by status',
       extendedDescription: `
-         Returns a map of status codes to quantities
+         **Implementation notes**
+         * Returns a map of status codes to quantities
       `
    },
    *handler () {

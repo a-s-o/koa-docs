@@ -1,9 +1,10 @@
 'use strict';
 
 const m = require('mithril');
-const anchor = require('./anchor');
 const stripIndent = require('strip-indent');
 
+const anchor = require('./anchor');
+const markdown = require('./markdown');
 const routeParams = require('./route-params');
 
 function heading (route) {
@@ -27,11 +28,13 @@ function routeInfo (method, path) {
 
 function description (route) {
    const meta = route.meta || {};
+   const desc = meta.description;
+   const extd = meta.extendedDescription;
 
    return m('div.panel-body', [
       m('p', routeInfo(route.method, route.path)),
-      m('p', meta.description),
-      m('p', meta.extendedDescription)
+      !desc ? '' : m('p', desc),
+      !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) ))
    ]);
 }
 
@@ -59,8 +62,12 @@ function routePanel (route) {
 }
 
 function routeGroup (group) {
+   const desc = group.description;
+   const extd = group.extendedDescription;
    return [
       m('h2.sub-header', group.groupName),
+      !desc ? '' : m('p', desc),
+      !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) )),
       group.routes.map(routePanel)
    ];
 }

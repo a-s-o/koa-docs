@@ -26,10 +26,15 @@
   },
   "homepage": "https://github.com/a-s-o/koa-docs#readme",
   "dependencies": {
+    "hasha": "*",
+    "lodash": "*",
+    "marked": "^0.3.5",
     "mithril": "*",
     "mithril-node-render": "*",
-    "hasha": "*",
-    "strip-indent": "*",
-    "lodash": "*"
+    "strip-indent": "*"
+  },
+  "devDependencies": {
+    "koa": "^1.1.2",
+    "koa-joi-router": "^2.1.2"
   }
 }
