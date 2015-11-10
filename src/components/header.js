@@ -20,7 +20,7 @@ module.exports = function header (opts) {
                     aria-expanded="false">Switch theme <span class="caret"></span>
                  </a>
                  <ul class="dropdown-menu switch-theme">
-                   <li><a href="#" theme="bootstrap">Default</a></li>
+                   <li><a href="#" theme="bootstrap">Bootstrap</a></li>
                    <li role="separator" class="divider"></li>
                    <li><a href="#" theme="cerulean">Cerulean</a></li>
                    <li><a href="#" theme="cosmo">Cosmo</a></li>

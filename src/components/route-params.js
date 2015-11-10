@@ -43,25 +43,6 @@ function paramsTable (validations, type) {
    ];
 }
 
-function isArray (schema) {
-   return schema._type === 'array';
-}
-
-function getItems (schema) {
-   if (!isArray(schema)) return [schema];
-   return get(schema, '_inner.items', []);
-}
-
-function itemLabel (schema) {
-   return get(schema, '_settings.language.label', '');
-}
-
-function arrayLabel (schema) {
-   if (!isArray(schema)) return '';
-   const items = getItems(schema).map(itemLabel);
-   return `Array [${items}]`;
-}
-
 function paramsHeader (schema, type, validations) {
    const bodyType = validations.type;
    const label = isArray(schema) ? arrayLabel(schema) : itemLabel(schema);
@@ -101,4 +82,23 @@ function paramsRow (schema, field) {
       m('td', schema._type + (!required ? '' : ' *')),
       m('td', schema._description || {})
    ]);
+}
+
+function isArray (schema) {
+   return schema._type === 'array';
+}
+
+function getItems (schema) {
+   if (!isArray(schema)) return [schema];
+   return get(schema, '_inner.items', []);
+}
+
+function itemLabel (schema) {
+   return get(schema, '_settings.language.label', '');
+}
+
+function arrayLabel (schema) {
+   if (!isArray(schema)) return '';
+   const items = getItems(schema).map(itemLabel);
+   return `Array [${items}]`;
 }
