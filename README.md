@@ -68,10 +68,10 @@ In addition to the above options, `koa-docs` looks for the following properties 
 
 ## Roadmap to 1.0
 
-* [ ] Multi version support
 * [ ] Ability to collapse/expand routes and groups
-* [ ] Quick filter
-* [ ] Quickly switch themes and configurable default theme
+* [ ] Ability to switch themes and make default theme configurable
+* [ ] Quick filter (fuzzysearch)
+* [ ] Multi version support
 
 ## License
 
