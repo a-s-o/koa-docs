@@ -24,6 +24,8 @@ app.use(docs.get('/v1/docs', {
    title: 'Pet Store API',    // Add page title and other info
    version: '1.0.0',
 
+   theme: 'simplex',            // Any theme from www.bootswatch.com
+
    groups: [
       // Provide the routes to the koa-api-docs for rendering
       {

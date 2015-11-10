@@ -22,6 +22,10 @@ const sidebar = require('./components/sidebar');
 const content = require('./components/content');
 
 module.exports = function renderTemplate (opts) {
+   const theme = opts.theme && opts.theme !== 'bootstrap' ?
+      swatch(`${opts.theme}/bootstrap.min.css`) :
+      bootstrap('css/bootstrap-theme.min.css');
+
    return [
       m.trust(doctype),
       m('html', { lang: 'en' }, [
@@ -40,7 +44,7 @@ module.exports = function renderTemplate (opts) {
             m('link', {
                id: 'theme',
                rel: 'stylesheet',
-               href: swatch('paper/bootstrap.min.css')
+               href: theme
             }),
             m.trust(`<style>${css}</style>`)
          ]),
