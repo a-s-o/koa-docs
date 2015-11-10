@@ -5,7 +5,7 @@ An automatic documentation generator for [koa](https://github.com/koajs/koa) API
 
 See `example` folder for source code. [View example output](http://a-s-o.github.io/koa-docs/example.html)
 
-![Screenshot](http://i.imgur.com/jUcraT6.png)
+![Screenshot](http://i.imgur.com/jv1k4g3.png)
 
 ## Install
 
