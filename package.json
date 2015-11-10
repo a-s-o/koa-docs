@@ -1,0 +1,35 @@
+{
+  "name": "koa-docs",
+  "version": "0.5.0",
+  "description": "An automatic documentation generator for koa.js APIs ",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-s-o/koa-docs.git"
+  },
+  "keywords": [
+    "koa",
+    "koajs",
+    "api",
+    "documentation",
+    "generator",
+    "joi",
+    "docs"
+  ],
+  "author": "Amandeep",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a-s-o/koa-docs/issues"
+  },
+  "homepage": "https://github.com/a-s-o/koa-docs#readme",
+  "dependencies": {
+    "mithril": "*",
+    "mithril-node-render": "*",
+    "hasha": "*",
+    "strip-indent": "*",
+    "lodash": "*"
+  }
+}
