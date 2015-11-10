@@ -96,3 +96,18 @@ div.content > nav.sidebar {
   display: inline-block;
   border-radius: 50%;
 }
+
+
+/* Collapse button */
+
+button.collapse-button > .icon-collapse {
+   display: none;
+}
+
+button.collapse-button[aria-expanded=true] > .icon-expand {
+   display: none;
+}
+
+button.collapse-button[aria-expanded=true] > .icon-collapse {
+   display: block;
+}

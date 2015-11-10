@@ -3,20 +3,21 @@
 const m = require('mithril');
 const get = require('lodash/object/get');
 
-module.exports = function routeParams (route) {
+module.exports = function routeParams (route, className) {
    return [
-      paramsTable(route.validate, 'header'),
-      paramsTable(route.validate, 'query'),
-      paramsTable(route.validate, 'params'),
-      paramsTable(route.validate, 'body')
+      paramsTable(route.validate, 'header', { className }),
+      paramsTable(route.validate, 'query', { className }),
+      paramsTable(route.validate, 'params', { className }),
+      paramsTable(route.validate, 'body', { className })
    ];
 };
 
-function paramsTable (validations, type) {
+function paramsTable (validations, type, opts) {
    if (!validations || !validations.hasOwnProperty(type)) return [];
 
    const schema = validations[type];
 
+   const className = opts.className || '';
    const style = {
       borderTop: '1px solid #eee',
       borderBottom: '1px solid #eee'
@@ -24,9 +25,9 @@ function paramsTable (validations, type) {
 
    return [
       // Heading before the table (i.e Body, Params, etc)
-      paramsHeader(schema, type, validations),
+      paramsHeader(schema, type, validations, opts),
 
-      m('table.table.table-bordered.table-striped', { style }, [
+      m('table.table.table-bordered.table-striped', { style, className }, [
          m.trust(`
             <colgroup>
                <col span="1" style="width: 25%;">
@@ -47,11 +48,11 @@ function paramsTable (validations, type) {
    ];
 }
 
-function paramsHeader (schema, type, validations) {
+function paramsHeader (schema, type, validations, opts) {
    const bodyType = validations.type;
    const label = get(schema, '_settings.language.label');
 
-   return m('h4', { style: { margin: '1rem' } }, [
+   return m('h4', { style: { margin: '1rem' }, className: opts.className }, [
       // Capitalize
       type.slice(0, 1).toUpperCase() + type.slice(1),
       // In case of body also indicate what type of body is expected

@@ -1,10 +1,11 @@
 {
   "name": "koa-docs",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "An automatic documentation generator for koa.js APIs ",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example": "node-dev example/server"
   },
   "repository": {
     "type": "git",

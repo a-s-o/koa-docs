@@ -2,15 +2,22 @@
 
 const m = require('mithril');
 const stripIndent = require('strip-indent');
+const hasha = require('hasha');
+const get = require('lodash/object/get');
 
 const anchor = require('./anchor');
 const markdown = require('./markdown');
 const routeParams = require('./route-params');
 
-function heading (route) {
+function routeHeading (route, collapseClass) {
    const meta = route.meta || {};
 
-   return m('div.panel-heading', [
+   const collapsable = {
+      'data-toggle': `collapse`,
+      'data-target': `.${collapseClass}`,
+      'style': { cursor: 'pointer' }
+   };
+   return m('div.panel-heading', collapsable, [
       m('h3.panel-title', meta.friendlyName || route.path)
    ]);
 }
@@ -26,19 +33,19 @@ function routeInfo (method, path) {
    ]);
 }
 
-function description (route) {
+function routeDescription (route, className) {
    const meta = route.meta || {};
    const desc = meta.description;
    const extd = meta.extendedDescription;
 
-   return m('div.panel-body', [
+   return m('div.panel-body', { className }, [
       m('p', routeInfo(route.method, route.path)),
       !desc ? '' : m('p', desc),
       !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) ))
    ]);
 }
 
-function footer (route) {
+function routeFooter (route, className) {
    const handler = stripIndent(`   ${route.handler.toString()}`);
 
    const style = {
@@ -46,32 +53,72 @@ function footer (route) {
       margin: 0
    };
 
-   return m('div.panel-footer', [
+   return m('div.panel-footer', { className }, [
       m('h5', { style: { margin: '1rem' } }, 'Implementation:'),
       m('pre', { style }, handler)
    ]);
 }
 
 function routePanel (route) {
-   return m(`div.panel.panel-default`, { id: anchor(route) }, [
-      heading(route),
-      description(route),
-      routeParams(route),
-      footer(route)
+   const id = anchor(route);
+   const collapseSelector = `collapse-${id}`;
+   const collapseState = [collapseSelector, 'collapse', 'in'].join(' ');
+
+   return m(`div.panel.panel-default`, { id }, [
+      routeHeading(route, collapseSelector),
+      routeDescription(route, collapseState),
+      routeParams(route, collapseState),
+      routeFooter(route, collapseState)
    ]);
 }
 
 function routeGroup (group) {
+   const name = group.groupName;
    const desc = group.description;
    const extd = group.extendedDescription;
+
+   const hash = hasha([name, desc, get(group, 'routes.length', 0)].join('-'));
+   const id = `group-${hash.slice(0, 12)}`;
+
    return [
-      m('h2.sub-header', group.groupName),
-      !desc ? '' : m('p', desc),
-      !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) )),
-      group.routes.map(routePanel)
+      // Header
+      m('div.group-header', [
+         collapseButton(`#${id}`),
+         m('h2.sub-header', group.groupName)
+      ]),
+
+      !desc ? '' : m('p.lead', desc),
+
+      // `in` class means open by default
+      m('div.collapse.in', { id }, [
+         !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) )),
+         group.routes.map(routePanel)
+      ])
    ];
 }
 
 module.exports = function content (opts) {
    return m('main', opts.groups.map(routeGroup));
 };
+
+function collapseButton (selector) {
+   return m('button.btn.btn-default.collapse-button', {
+      'data-toggle': `collapse`,
+      'data-target': selector,
+      'aria-expanded': `true`,
+      'style': { float: 'right' }
+   }, [
+      m('span.icon-expand', icon('eye-open', 'Expand')),
+      m('span.icon-collapse', icon('eye-close', 'Collapse'))
+   ]);
+}
+
+function icon (name, label) {
+   const hasLabel = !!label;
+
+   const glyph = m(`span.glyphicon.glyphicon-${name}`, {
+      style: hasLabel ? { marginRight: '1rem' } : {}
+   });
+
+   return [glyph].concat(hasLabel ? label : []);
+}
