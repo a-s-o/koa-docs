@@ -31,9 +31,11 @@ app.use(docs.get('/v1/docs', {
          routes: petRouter.routes,
          description: 'Functionality for dealing with pets',
          extendedDescription: `
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a
-            diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac
-            quam viverra nec consectetur ante hendrerit.
+            Markdown is supported in the \`extendedDescription\` fields so
+            it is an ideal place to add additional information while leaving
+            the \`friendlyName\` and \`description\` fields concise. This allows
+            easier navigation and better collapsing of groups and routes.
+
             * Donec et mollis dolor.
             * Praesent et diam eget libero egestas mattis sit amet vitae augue.
             * Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
