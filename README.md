@@ -11,14 +11,14 @@ See `example` folder for source code. [View example output](http://a-s-o.github.
 
     > npm install --save koa-docs
 
-## Usage:
+## Usage
 
 ```javascript
 const app = require('koa')();
 const docs = require('koa-docs');
 
 // Create a path for viewing the docs (only GET method is supported)
-app.use(docs.get('/v1/docs', {
+app.use(docs.get('/docs', {
    title: 'Pet Store API',
    version: '1.0.0',
 
@@ -33,9 +33,34 @@ app.use(docs.get('/v1/docs', {
 
 app.listen(3000, (err) => {
    if (err) throw err;
-   console.log(`Docs are available at http://localhost:3000/v1/docs`);
+   console.log(`Docs are available at http://localhost:3000/docs`);
 });
 ```
+
+## docs.get(path, options)
+
+Creates a koa middleware which generates and serves api documentation
+using the specs provided in the options object.
+
+**Arguments**
+1. path (String): the GET path at which the documentation will be served
+2. options (Object)
+    - `title`: Page title; displayed at the top of the docs
+    - `version`: API version; also displayed at the top
+    - `theme`: The default theme for rendering the API; all [www.bootswatch.com](http://www.bootswatch.com) themes are available
+    - `groups`: array of [group specs](#group-specs) as described below
+
+**Returns**
+
+(GeneratorFunction): Middleware suitable for use in koa.js app
+
+## Group specs
+Groups are used to logically display the various sections of your api. They are declared as follows:
+
+- `groupName`: string representing the name of the group
+- `description`: string that describes the group; keep this short at about 1 scentence. This is displayed in both expanded and collapsed states as well as in tooltips. This should be a simple string; no markdown
+- `extendedDescription`: string that supports markdown and is displayed only in when a group is being displayed in an expanded state. Make this as long as you need.
+- `routes`: array of [route specs](#route-specs) representing the routes in this group. See below for details on route specs.
 
 ## Route specs
 The route specs are the same as [koa-joi-router](https://github.com/pebble/koa-joi-router#route-options), therefore, those routes can be used directly with `koa-docs`. Specifications are as follows:
@@ -63,7 +88,7 @@ In addition to the above options, `koa-docs` looks for the following properties 
 - `description`: string that describes the routes; keep this short at about 1 scentence. This is displayed in both expanded and collapsed states as well as in tooltips. This should be a simple string; no markdown
 - `extendedDescription`: string that supports markdown and is displayed only in when a route is being displayed in an expanded state. Make this as long as you need.
 
-### sample routes
+### Sample routes
 
 * [pets example](example/routes/pets.js)
 * [store example](example/routes/store.js)

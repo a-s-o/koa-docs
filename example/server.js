@@ -51,5 +51,5 @@ app.use(docs.get('/docs', {
 
 app.listen(3000, (err) => {
    if (err) throw err;
-   console.log(`Docs are available at http://localhost:3000/v1/docs`);
+   console.log(`Docs are available at http://localhost:3000/docs`);
 });

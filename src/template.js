@@ -23,7 +23,7 @@ const content = require('./components/content');
 
 module.exports = function renderTemplate (opts) {
    const theme = opts.theme && opts.theme !== 'bootstrap' ?
-      swatch(`${opts.theme}/bootstrap.min.css`) :
+      swatch(`${opts.theme.toLowerCase()}/bootstrap.min.css`) :
       bootstrap('css/bootstrap-theme.min.css');
 
    return [
