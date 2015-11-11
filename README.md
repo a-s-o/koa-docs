@@ -51,6 +51,7 @@ Creates a koa middleware which generates and serves api documentation
 using the specs provided in the options object.
 
 **Arguments**
+
 1. path (String): the GET path at which the documentation will be served
 2. options (Object)
     - `title`: Page title; displayed at the top of the docs
