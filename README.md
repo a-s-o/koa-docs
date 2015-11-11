@@ -54,9 +54,9 @@ using the specs provided in the options object.
 
 1. path (String): the GET path at which the documentation will be served
 2. options (Object)
-    - `title`: Page title; displayed at the top of the docs
-    - `version`: API version; also displayed at the top
-    - `theme`: The default theme for rendering the API; all [www.bootswatch.com](http://www.bootswatch.com) themes are available
+    - `title`: string representing the page title; displayed at the top of the docs
+    - `version`: string representing api version; also displayed at top of the docs
+    - `theme`: string name of a theme from [bootswatch](http://www.bootswatch.com) to be used as the default theme
     - `groups`: array of [group specs](#group-specs) as described below
 
 **Returns**
