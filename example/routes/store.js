@@ -11,6 +11,8 @@ const Order = t.object().label('Order').keys({
    complete: t.boolean()
 });
 
+const Quantity = t.number().integer().label('Quantity');
+
 const storeInventory = {
    method: 'get',
    path: '/store/inventory',
@@ -21,6 +23,13 @@ const storeInventory = {
          **Implementation notes**
          * Returns a map of status codes to quantities
       `
+   },
+   validate: {
+      output: {
+         available: Quantity.description('Pets available for sale'),
+         pending: Quantity.description('# of pets awaiting processing'),
+         sold: Quantity.description('# of pets sold')
+      }
    },
    *handler () {
       // This route does not have any validations
