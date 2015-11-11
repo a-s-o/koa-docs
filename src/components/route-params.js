@@ -3,6 +3,8 @@
 const m = require('mithril');
 const get = require('lodash/object/get');
 
+const collapsablePanel = require('./collapsable-panel');
+
 module.exports = function routeParams (route) {
    return [
       paramsTable(route.validate, 'header'),
@@ -17,47 +19,49 @@ function paramsTable (validations, type) {
    if (!validations || !validations.hasOwnProperty(type)) return [];
 
    const schema = validations[type];
+   const heading = paramsHeader(schema, type, validations);
 
-   return [
-      // Heading before the table (i.e Body, Params, etc)
-      paramsHeader(schema, type, validations),
+   const table = {
+      style: { marginBottom: 0 }
+   };
 
-      m('table.table.table-striped', [
+   const panel = {
+      className: type === 'output' ? 'panel-success' : ''
+   };
+
+   return collapsablePanel(heading, panel, [
+      m('table.table.table-striped', table, [
          m.trust(`
             <colgroup>
                <col span="1" style="width: 20%;">
                <col span="1" style="width: 15%;">
                <col span="1" style="width: 65%;">
             </colgroup>
-            <thead>
-               <tr>
-                  <th>Field</th>
-                  <th>Type</th>
-                  <th>Description</th>
-               </tr>
-            </thead>
          `),
 
          getItems(schema).map(paramsTableBody)
       ])
-   ];
+   ]);
 }
 
 function paramsHeader (schema, type, validations) {
    const bodyType = validations.type;
    const label = isArray(schema) ? arrayLabel(schema) : itemLabel(schema);
 
-   return m('h4', { style: { margin: '1rem' } }, [
-      // Capitalize
+   const header = [
       type.slice(0, 1).toUpperCase() + type.slice(1),
-      // In case of body also indicate what type of body is expected
-      // i.e. json, form, multipart
-      type !== 'body' ? '' : m('span.label.label-info', {
-         style: { marginLeft: '1ex' }
-      }, bodyType),
+      !label ? '' : `: ${label}`
+   ];
 
-      !label ? '' : m('em', `: ${label}`)
-   ]);
+   // In case of body also indicate what type of body is expected
+   // i.e. json, form, multipart
+   if (type === 'body') {
+      const tag = { style: { float: 'right' } };
+      const bodyTag = m('span.label.label-info', tag, bodyType);
+      header.push(bodyTag);
+   }
+
+   return header;
 }
 
 function paramsTableBody (schema) {
@@ -100,5 +104,5 @@ function itemLabel (schema) {
 function arrayLabel (schema) {
    if (!isArray(schema)) return '';
    const items = getItems(schema).map(itemLabel);
-   return `Array [${items}]`;
+   return `Array [ ${items} ]`;
 }

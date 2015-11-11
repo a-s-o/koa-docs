@@ -111,3 +111,9 @@ button.collapse-button[aria-expanded=true] > .icon-expand {
 button.collapse-button[aria-expanded=true] > .icon-collapse {
    display: block;
 }
+
+/* Collapsable panel */
+div.collapsable-panel div.collapsable-panel {
+   margin-top: 2rem;
+   margin-bottom: 0;
+}
