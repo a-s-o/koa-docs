@@ -74,12 +74,12 @@ In addition to the above options, `koa-docs` looks for the following properties 
 * [x] Add `description` and `extendedDescription` for groups
 * [x] Ability to collapse/expand routes and groups
 * [x] Ability to switch themes and make default theme configurable
-* [ ] More descriptive type descriptions for arrays and nested objects
-* [ ] Create separate section for models (joi objects that have a label)
-* [ ] Add popovers for displaying models
+* [x] More descriptive type descriptions for arrays and nested objects
+* [x] ~~Create separate section for models (joi objects that have a label)~~ Deferred; for now, displayed directly where they are used
+* [x] ~~Add popovers for displaying models~~ Deferred
 * [ ] Quick filter (fuzzysearch)
 * [ ] Ability to save the generated HTML to file
-* [ ] Multi version support
+* [x] ~~Multi version support~~ Deferred; need more feedback
 
 ## License
 
