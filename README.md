@@ -1,6 +1,14 @@
 # koa-docs
 An automatic documentation generator for [koa](https://github.com/koajs/koa) APIs. The goal is to make documentation easy using route specs that may already exist.
 
+* [Usage](#usage)
+* API:
+    * [docs.get()](#docsgetpath-options)
+    * That's it (just one method)
+* Specs:
+    * [Groups](#group-specs)
+    * [Routes](#route-specs)
+
 ## Demo
 
 See `example` folder for source code. [View example output](http://a-s-o.github.io/koa-docs/example.html)
