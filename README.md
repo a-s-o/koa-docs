@@ -8,6 +8,9 @@ An automatic documentation generator for [koa](https://github.com/koajs/koa) API
 * Specs:
     * [Groups](#group-specs)
     * [Routes](#route-specs)
+* Links:
+    * [Github repo](https://github.com/a-s-o/koa-docs)
+    * [Sample output](http://a-s-o.github.io/koa-docs/example.html)
 
 ## Demo
 
