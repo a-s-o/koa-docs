@@ -3,7 +3,7 @@
 const m = require('mithril');
 const stripIndent = require('strip-indent');
 const hasha = require('hasha');
-const get = require('lodash/object/get');
+const get = require('lodash/get');
 
 const anchor = require('./anchor');
 const markdown = require('./markdown');
