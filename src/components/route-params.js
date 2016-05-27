@@ -1,7 +1,7 @@
 'use strict';
 
 const m = require('mithril');
-const get = require('lodash/object/get');
+const get = require('lodash/get');
 
 const collapsablePanel = require('./collapsable-panel');
 
