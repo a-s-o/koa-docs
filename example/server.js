@@ -26,8 +26,6 @@ app.use(docs.get('/docs', {
 
    theme: 'paper',            // Any theme from www.bootswatch.com
 
-   routeHandlers: 'disabled',
-
    groups: [
       // Provide the routes to the koa-api-docs for rendering
       {
