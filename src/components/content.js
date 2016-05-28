@@ -11,10 +11,10 @@ const routeParams = require('./route-params');
 const collapsablePanel = require('./collapsable-panel');
 
 module.exports = function content (opts) {
-   return m('main', opts.groups.map(section));
+   return m('main', opts.groups.map(group => section(group, opts)));
 };
 
-function section (group) {
+function section (group, opts) {
    const name = group.groupName;
    const desc = group.description;
    const extd = group.extendedDescription;
@@ -34,12 +34,12 @@ function section (group) {
       // `in` class means open by default
       m('div.collapse.in', { id }, [
          !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) )),
-         group.routes.map((route, index) => routePanel(route, index, group))
+         group.routes.map((route, index) => routePanel(route, index, group, opts))
       ])
    ];
 }
 
-function routePanel (route, index, group) {
+function routePanel (route, index, group, opts) {
    const id = anchor(route);
    const title = get(route, 'meta.friendlyName', route.path);
 
@@ -47,7 +47,7 @@ function routePanel (route, index, group) {
       m('div.panel-body', [
          routeDescription(route, index, group),
          routeParams(route, index, group),
-         routeHandler(route, index, group)
+         opts.routeHandlers === 'disabled' ? null : routeHandler(route, opts)
       ]),
       routeFooter(route, index, group)
    ]);
@@ -84,23 +84,26 @@ function routeInfo (method, path, prefix = '') {
 // Handler and footer //
 ////////////////////////
 
-function routeHandler (route) {
+function routeHandler (route, opts) {
    const handler = stripIndent(`   ${route.handler.toString()}`);
    const code = m('pre', { style: { border: 0, margin: 0 } }, handler);
 
+   const panelOptions = { collapsed: opts.routeHandlers !== 'expanded' };
+
    // Handler is collapsed by default
-   return collapsablePanel('Handler', { collapsed: true }, code);
+   return collapsablePanel('Handler', panelOptions, code);
 }
 
-function routeFooter (route) {
+function routeFooter (route, index, group) {
    const transparent = { background: 'transparent' };
+   const prefix = group.prefix || '';
 
    return m('div.panel-footer', { style: transparent }, [
       // Reference
       m('small.text-muted', [
          'End of',
          route.method.toString().toUpperCase(),
-         route.path.toString()
+         prefix + route.path.toString()
       ].join(' ')),
 
       // Back to top link

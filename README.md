@@ -36,6 +36,8 @@ app.use(docs.get('/docs', {
    theme: 'simplex',    // Specify a theme from www.bootswatch.com;
                         // default is un-themed bootstrap
 
+   routeHandlers: 'disabled',  // Hide the route implementation code from docs
+
    groups: [
       { groupName: 'Pets', routes: [/*  ... route specs ...  */] },
       { groupName: 'Store', routes: [/*  ... route specs ...  */] }
@@ -59,6 +61,7 @@ using the specs provided in the options object.
 2. options (Object)
     - `title`: string representing the page title; displayed at the top of the docs
     - `version`: string representing api version; also displayed at top of the docs
+    - `routeHandlers`: string indicating whether to show the route handler code in the docs. Options are __disabled__, __expanded__ or __collapsed__ (collapsed is the default)
     - `theme`: string name of a theme from [bootswatch](http://www.bootswatch.com) to be used as the default theme
     - `groups`: array of [group specs](#group-specs) as described below
 
