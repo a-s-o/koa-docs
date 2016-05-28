@@ -63,20 +63,16 @@ function routeDescription (route, index, group) {
    const extd = meta.extendedDescription;
 
    return [
-      m('p', routeInfo(route.method, route.path, group.prefix)),
+      routeInfo(route.method, route.path, group.prefix),
       !desc ? '' : m('p', desc),
       !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) ))
    ];
 }
 
 function routeInfo (method, path, prefix = '') {
-   return m('div.input-group', [
-      m('span.input-group-btn', m('button.btn.btn-primary', method)),
-      m('input.form-control', {
-         type: 'text',
-         value: `${prefix}${path}`,
-         style: { paddingLeft: '1em' }
-      })
+   return m('h4', { style: { marginTop: '0' } }, [
+      m('span.label.label-primary', { style: { marginRight: '0.5em' } }, method),
+      prefix + path
    ]);
 }
 
