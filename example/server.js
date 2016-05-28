@@ -46,9 +46,9 @@ app.use(docs.get('/docs', {
          `
       },
       {
-        groupName: 'Store',
-        routes: storeRouter.routes,
-        prefix: '/something/random'
+         groupName: 'Store',
+         routes: storeRouter.routes,
+         prefix: '/something/random'
       }
    ]
 }));
