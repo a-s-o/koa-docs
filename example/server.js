@@ -48,7 +48,7 @@ app.use(docs.get('/docs', {
       {
          groupName: 'Store',
          routes: storeRouter.routes,
-         prefix: '/something/random'
+         prefix: '/store'
       }
    ]
 }));

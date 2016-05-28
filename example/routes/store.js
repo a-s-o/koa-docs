@@ -15,7 +15,7 @@ const Quantity = t.number().integer().label('Quantity');
 
 const storeInventory = {
    method: 'get',
-   path: '/store/inventory',
+   path: '/inventory',
    meta: {
       friendlyName: 'Store inventory',
       description: 'Returns pet inventories by status',
@@ -42,7 +42,7 @@ const storeInventory = {
 
 const orderPet = {
    method: 'post',
-   path: '/store/order',
+   path: '/order',
    meta: {
       friendlyName: 'Place an order for a pet'
    },
