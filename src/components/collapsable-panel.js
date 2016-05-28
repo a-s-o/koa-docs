@@ -11,7 +11,7 @@ module.exports = function collapsablePanel (title) {
    const collapsableId = `collapsable-${panels++}`;
 
    const clickTarget = {
-      'data-toggle': `collapse`,
+      'data-toggle': 'collapse',
       'data-target': `#${collapsableId}`,
       'style': { cursor: 'pointer' }
    };
@@ -21,7 +21,7 @@ module.exports = function collapsablePanel (title) {
       className: 'collapse ' + (attrs.collapsed === true ? '' : 'in')
    };
 
-   return m(`div.panel.panel-default.collapsable-panel`, attrs, [
+   return m('div.panel.panel-default.collapsable-panel', attrs, [
       m('div.panel-heading', clickTarget, [
          m('h3.panel-title', title)
       ]),

@@ -45,11 +45,15 @@ app.use(docs.get('/docs', {
             * Lorem ipsum dolor sit amet, consectetur adipiscing elit.
          `
       },
-      { groupName: 'Store', routes: storeRouter.routes }
+      {
+        groupName: 'Store',
+        routes: storeRouter.routes,
+        prefix: '/something/random'
+      }
    ]
 }));
 
 app.listen(3000, (err) => {
    if (err) throw err;
-   console.log(`Docs are available at http://localhost:3000/docs`);
+   console.log('Docs are available at http://localhost:3000/docs');
 });

@@ -7,10 +7,10 @@ const fs = require('fs');
 const bootstrap = file => `http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/${file}`;
 const swatch = file => `https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/${file}`;
 
-const doctype = `<!DOCTYPE html>`;
-const charset = `<meta charset="utf-8">`;
-const ua = `<meta http-equiv="X-UA-Compatible" content="IE=edge">`;
-const vp = `<meta name="viewport" content="width=device-width, initial-scale=1">`;
+const doctype = '<!DOCTYPE html>';
+const charset = '<meta charset="utf-8">';
+const ua = '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+const vp = '<meta name="viewport" content="width=device-width, initial-scale=1">';
 
 // Read client side includes
 const read = file => fs.readFileSync(path.resolve(__dirname, file), 'utf-8');
@@ -60,12 +60,8 @@ module.exports = function renderTemplate (opts) {
             ]),
 
             // Scripts
-            m('script', {
-               src: 'http://code.jquery.com/jquery-2.1.4.min.js'
-            }),
-            m('script', {
-               src: bootstrap('js/bootstrap.min.js')
-            }),
+            m('script', { src: 'http://code.jquery.com/jquery-2.1.4.min.js' }),
+            m('script', { src: bootstrap('js/bootstrap.min.js') }),
             m.trust(`<script>${js}</script>`)
          ])
       ])

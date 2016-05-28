@@ -13,6 +13,7 @@ function createMiddleware (route, opts) {
       }
 
       this.body = html;
+      return void 0;
    };
 }
 

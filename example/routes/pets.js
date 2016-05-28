@@ -20,15 +20,15 @@ const Pet = t.object().label('Pet').keys({
    photoUrls: t.array().items(t.string()).required(),
    status: t.string()
       .valid(['available', 'pending', 'sold'])
-      .description(`pet status in the store`)
+      .description('pet status in the store')
 });
 
 const createPet = {
    method: 'post',
    path: '/pet',
    meta: {
-      friendlyName: `Add pet`,
-      description: `Add a new pet to the store`
+      friendlyName: 'Add pet',
+      description: 'Add a new pet to the store'
    },
    validate: {
       type: 'json',
@@ -73,7 +73,7 @@ const getPetByStatus = {
       type: 'json',
       query: {
          status: t.array()
-            .description(`Status values that need to be considered for filter`)
+            .description('Status values that need to be considered for filter')
             .items(t.string())
             .min(1)        // At least 1 should be provided
             .single()      // If only one is provided, wrap it in an array
