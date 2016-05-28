@@ -34,22 +34,22 @@ function section (group) {
       // `in` class means open by default
       m('div.collapse.in', { id }, [
          !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) )),
-         group.routes.map(routePanel)
+         group.routes.map((route, index) => routePanel(route, index, group))
       ])
    ];
 }
 
-function routePanel (route) {
+function routePanel (route, index, group) {
    const id = anchor(route);
    const title = get(route, 'meta.friendlyName', route.path);
 
    return collapsablePanel(title, { id }, [
       m('div.panel-body', [
-         routeDescription(route),
-         routeParams(route),
-         routeHandler(route)
+         routeDescription(route, index, group),
+         routeParams(route, index, group),
+         routeHandler(route, index, group)
       ]),
-      routeFooter(route)
+      routeFooter(route, index, group)
    ]);
 }
 
@@ -57,24 +57,24 @@ function routePanel (route) {
 // Description //
 /////////////////
 
-function routeDescription (route) {
+function routeDescription (route, index, group) {
    const meta = route.meta || {};
    const desc = meta.description;
    const extd = meta.extendedDescription;
 
    return [
-      m('p', routeInfo(route.method, route.path)),
+      m('p', routeInfo(route.method, route.path, group.prefix)),
       !desc ? '' : m('p', desc),
       !extd ? '' : m('p', m.trust( markdown( stripIndent(extd) ) ))
    ];
 }
 
-function routeInfo (method, path) {
+function routeInfo (method, path, prefix = '') {
    return m('div.input-group', [
       m('span.input-group-btn', m('button.btn.btn-primary', method)),
       m('input.form-control', {
          type: 'text',
-         value: path,
+         value: `${prefix}${path}`,
          style: { paddingLeft: '1em' }
       })
    ]);
@@ -114,9 +114,9 @@ function routeFooter (route) {
 
 function collapseButton (selector) {
    return m('button.btn.btn-default.collapse-button', {
-      'data-toggle': `collapse`,
+      'data-toggle': 'collapse',
       'data-target': selector,
-      'aria-expanded': `true`,
+      'aria-expanded': 'true',
       'style': { float: 'right' }
    }, [
       m('span.icon-expand', icon('eye-open', 'Expand')),

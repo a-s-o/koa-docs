@@ -72,6 +72,7 @@ Groups are used to logically display the various sections of your api. They are 
 - `groupName`: string representing the name of the group
 - `description`: string that describes the group; keep this short at about 1 scentence. This is displayed in both expanded and collapsed states as well as in tooltips. This should be a simple string; no markdown
 - `extendedDescription`: string that supports markdown and is displayed only in when a group is being displayed in an expanded state. Make this as long as you need.
+- `prefix`: optional string to be prefixed to all route paths in this group
 - `routes`: array of [route specs](#route-specs) representing the routes in this group. See below for details on route specs.
 
 ## Route specs
