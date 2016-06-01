@@ -69,10 +69,10 @@ function routeDescription (route, index, group) {
    ];
 }
 
-function routeInfo (method, path, prefix = '') {
+function routeInfo (method, path, prefix) {
    return m('h4', { style: { marginTop: '0' } }, [
       m('span.label.label-primary', { style: { marginRight: '0.5em' } }, method),
-      prefix + path
+      (prefix || '') + path
    ]);
 }
 
