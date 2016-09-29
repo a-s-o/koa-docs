@@ -162,9 +162,9 @@ function getItems (schema) {
 
 function itemLabel (schema) {
   const label = get(schema, '_settings.language.label', '');
-  const type = schema._type || schema.constructor.name.toLowerCase();
+  const type = schema._type || schema.constructor.name;
   const flags = schema._flags || {};
-  return label || (type + (flags.default ? ` = ${flags.default}` : ''));
+  return label || ((type.slice(0, 1).toUpperCase() + type.slice(1)) + (flags.default ? ` = ${flags.default}` : ''));
 }
 
 function arrayLabel (schema) {
