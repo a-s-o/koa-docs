@@ -134,7 +134,7 @@ function paramsRow (schema, field) {
   const invalids = schema._invalids._set;
   const tests = schema._tests;
   return m('tr', [
-    m('td', field + (flags.default ? ` = ${flags.default}` : '')),
+    m('td', field + (flags.default !== undefined ? ` = ${flags.default}` : '')),
     m('td', [
       schema._type,
       Array.isArray(schema) && 'array' || '',
