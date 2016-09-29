@@ -26,9 +26,31 @@ const storeInventory = {
    },
    validate: {
       output: {
-         available: Quantity.description('Pets available for sale'),
-         pending: Quantity.description('# of pets awaiting processing'),
-         sold: Quantity.description('# of pets sold')
+        200: {
+          body: {
+            available: Quantity.description('Pets available for sale'),
+            pending: Quantity.description('# of pets awaiting processing'),
+            sold: Quantity.description('# of pets sold')
+          }
+        },
+        400: {
+          body: {
+            code: t.number().integer().min(0).max(100).default(0).description('Code to explain the response.'),
+            errors: t.object().keys({
+              name: {
+                message: t.string().required().default('Some pet has no name!').description('Thrown when some pets has no name.')
+              }
+            }),
+            tags: t.array().items(t.object().keys({
+              label: t.string().example('Hello').example('World'),
+              signal: t.array().items(t.string())
+            })),
+            error: t.string().valid('Pets not found!').description('Pets not found!')
+          }
+        },
+        500: {
+          body: t.string().default('Server Internal Error.')
+        }
       }
    },
    *handler () {
