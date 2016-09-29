@@ -107,14 +107,18 @@ function traversingSchema (schema, key) {
   if (schema.isJoi) {
     if (schema._type === 'object') {
       const children = get(schema, '_inner.children', []);
-      children.forEach(child => {
-        result.push(...traversingSchema(child.schema, key ? `${key}.${child.key}` : child.key));
-      });
+      if(children) {
+        children.forEach(child => {
+          result.push(...traversingSchema(child.schema, key ? `${key}.${child.key}` : child.key));
+        });
+      }
     } else if (schema._type === 'array') {
       const items = get(schema, '_inner.items', []);
-      items.forEach(item => {
-        result.push(...traversingSchema(item, `${key}[]`));
-      });
+      if(items) {
+        items.forEach(item => {
+          result.push(...traversingSchema(item, `${key}[]`));
+        });
+      }
     }
   } else if (typeof schema === 'object') {
     Object.keys(schema).forEach(k => {
@@ -133,10 +137,15 @@ function paramsRow (schema, field) {
   const valids = schema._valids._set;
   const invalids = schema._invalids._set;
   const tests = schema._tests;
+  let type = schema._type;
+  if(type === 'alternatives') {
+    const schemas = get(schema, '_inner.matches', []);
+    type = schemas.map(s => s.schema._type).join(' | ');
+  }
   return m('tr', [
     m('td', field + (flags.default !== undefined ? ` = ${flags.default}` : '')),
     m('td', [
-      schema._type,
+      type,
       Array.isArray(schema) && 'array' || '',
       !required ? '' : ' *',
       tests.length > 0 ? ` [${tests.map(test => {
