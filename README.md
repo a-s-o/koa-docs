@@ -20,7 +20,10 @@ See `example` folder for source code. [View example output](http://a-s-o.github.
 
 ## Install
 
-    > npm install --save koa-docs
+    > npm install --save koa-docs@2.x.x
+
+Note version `2.x.x` of this package uses joi router version `^3` specs; use version `1.x.x` of this
+package if you are using older specs
 
 ## Usage
 
