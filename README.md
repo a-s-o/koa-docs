@@ -109,6 +109,17 @@ In addition to the above options, `koa-docs` looks for the following properties 
 * [pets example](example/routes/pets.js)
 * [store example](example/routes/store.js)
 
+## Roadmap / Contribution
+
+Please feel free to claim any of the following features for development; more
+features can be requested by opening an issue.
+
+* [ ] Create separate section for models (joi objects that have a label)
+* [ ] Add popovers for displaying models
+* [ ] Quick filter (fuzzysearch)
+* [ ] Ability to save the generated HTML to file
+* [ ] E2E testing of output
+
 ## License
 
 [MIT](LICENSE)
