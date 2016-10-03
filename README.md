@@ -109,19 +109,6 @@ In addition to the above options, `koa-docs` looks for the following properties 
 * [pets example](example/routes/pets.js)
 * [store example](example/routes/store.js)
 
-## Roadmap to 1.0
-
-* [x] Render `extendedDescription` using markdown
-* [x] Add `description` and `extendedDescription` for groups
-* [x] Ability to collapse/expand routes and groups
-* [x] Ability to switch themes and make default theme configurable
-* [x] More descriptive type descriptions for arrays and nested objects
-* [x] ~~Create separate section for models (joi objects that have a label)~~ Deferred; for now, displayed directly where they are used
-* [x] ~~Add popovers for displaying models~~ Deferred
-* [ ] Quick filter (fuzzysearch)
-* [ ] Ability to save the generated HTML to file
-* [x] ~~Multi version support~~ Deferred; need more feedback
-
 ## License
 
 [MIT](LICENSE)

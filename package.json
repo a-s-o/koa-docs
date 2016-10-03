@@ -4,7 +4,7 @@
   "description": "An automatic documentation generator for koa.js APIs ",
   "main": "src/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 0",
     "example": "node-dev example/server"
   },
   "repository": {
