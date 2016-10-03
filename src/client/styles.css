@@ -117,3 +117,7 @@ div.collapsable-panel div.collapsable-panel {
    margin-top: 2rem;
    margin-bottom: 0;
 }
+
+.panel-body {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
