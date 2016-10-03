@@ -1,6 +1,6 @@
 {
   "name": "koa-docs",
-  "version": "0.9.3",
+  "version": "1.0.0",
   "description": "An automatic documentation generator for koa.js APIs ",
   "main": "src/main.js",
   "scripts": {
