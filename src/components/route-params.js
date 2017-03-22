@@ -94,7 +94,7 @@ function paramsTableBody (schema) {
   body.children.unshift(m('tr', [
     m('th', 'Key = default'),
     m('th', 'Type* (tests) in [valids] not in [invalids]'),
-    m('th', 'Eaxmples'),
+    m('th', 'Examples'),
     m('th', 'Description'),
   ]));
 
