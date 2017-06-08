@@ -140,7 +140,11 @@ function paramsRow (schema, field) {
   let type = schema._type;
   if(type === 'alternatives') {
     const schemas = get(schema, '_inner.matches', []);
-    type = schemas.map(s => s.schema._type).join(' | ');
+    type = schemas.map(s => {
+      if (s.schema)
+        return s.schema._type;
+      return whenLabel(s);
+    }).join(' | ');
   }
   return m('tr', [
     m('td', field + (flags.default !== undefined ? ` = ${flags.default}` : '')),
@@ -180,4 +184,8 @@ function arrayLabel (schema) {
   if (!isArray(schema)) return '';
   const items = getItems(schema).map(itemLabel);
   return `Array [ ${items} ]`;
+}
+
+function whenLabel (schema) {
+  return `(when ${schema.ref.key} is ${schema.is._valids._set}) then ${itemLabel(schema.then)}`;
 }
