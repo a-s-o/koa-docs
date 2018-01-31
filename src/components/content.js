@@ -70,6 +70,7 @@ function routeDescription (route, index, group) {
 }
 
 function routeInfo (method, path, prefix) {
+   method = Array.isArray(method) ? method.join(',') : method
    return m('h4', { style: { marginTop: '0' } }, [
       m('span.label.label-primary', { style: { marginRight: '0.5em' } }, method),
       (prefix || '') + path

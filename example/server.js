@@ -1,7 +1,6 @@
 'use strict';
 
 
-require('mithril/test-utils/browserMock')(global);
 const Koa = require('koa');
 const router = require('koa-joi-router');
 const docs = require('../');

@@ -1,5 +1,6 @@
 'use strict';
 
+require('mithril/test-utils/browserMock')(global);
 const render = require('mithril-node-render');
 const tpl = require('./template');
 
