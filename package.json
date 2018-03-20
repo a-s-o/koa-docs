@@ -1,5 +1,5 @@
 {
-  "name": "koa-docs",
+  "name": "@appliedblockchain/koa-docs",
   "version": "2.1.0",
   "description": "An automatic documentation generator for koa.js APIs ",
   "main": "src/main.js",
