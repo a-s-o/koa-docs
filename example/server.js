@@ -1,8 +1,11 @@
 'use strict';
 
-const app = require('koa')();
+
+const Koa = require('koa');
 const router = require('koa-joi-router');
 const docs = require('../');
+
+const app = new Koa();
 
 // Temporary fix for koa-joi-router only accepting routes one at a time
 const createRouter = route => {

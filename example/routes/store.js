@@ -53,9 +53,9 @@ const storeInventory = {
         }
       }
    },
-   *handler () {
+   handler: async ctx => {
       // This route does not have any validations
-      return this.db().table('store')
+      return ctx.db().table('store')
          .groupBy('statusCode')
          .map('quantity')
          .run();
@@ -72,9 +72,9 @@ const orderPet = {
       type: 'json',
       body: Order
    },
-   *handler () {
-      const order = this.request.body;
-      yield this.db().table('orders').insert(order).run();
+   handler: async ctx => {
+      const order = ctx.request.body;
+      await ctx.db().table('orders').insert(order).run();
    }
 };
 

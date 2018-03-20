@@ -34,9 +34,9 @@ const createPet = {
       type: 'json',
       body: Pet
    },
-   *handler () {
-      const pet = this.request.body;
-      return yield this.db().table('pets').insert(pet).run();
+   handler: async ctx => {
+      const pet = ctx.request.body;
+      return await ctx.db().table('pets').insert(pet).run();
    }
 };
 
@@ -51,14 +51,14 @@ const updatePet = {
       type: 'json',
       body: Pet
    },
-   *handler () {
-      const pet = this.request.body;
-      if (!pet.id) this.throw(400, 'Invalid ID supplied');
+   handler: async ctx => {
+      const pet = ctx.request.body;
+      if (!pet.id) ctx.throw(400, 'Invalid ID supplied');
 
-      const existing = this.db().get(pet.id).run();
-      if (!existing) this.throw(404, 'Pet not found');
+      const existing = ctx.db().get(pet.id).run();
+      if (!existing) ctx.throw(404, 'Pet not found');
 
-      return this.db().table('pets').update(pet).run();
+      return ctx.db().table('pets').update(pet).run();
    }
 };
 
@@ -87,10 +87,10 @@ const getPetByStatus = {
         }
       }
    },
-   *handler () {
+   handler: async ctx => {
       const query = this.request.query;
 
-      return yield this.db()
+      return await ctx.db()
          .table('pets')
          .getAll(query.status)
          .run();
